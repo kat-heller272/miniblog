@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Add a Comment to "{{ post.title }}"</h1>
+
+  <form method="post" class="add-comment">
+    {% csrf_token %}
+    <!--{{ form.as_p }}-->
+     <div class="fieldWrapper">
+        <p>{{ form.comment_text.label_tag }}</p>
+        <p>{{ form.comment_text }}</p>
+        {% if form.comment_text.help_text %}
+          <p class="help">{{ form.comment_text.help_text }}</p>       
+        {% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary">Post Comment</button>
+  </form>
+{% endblock %}

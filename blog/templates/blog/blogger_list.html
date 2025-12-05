@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>All Bloggers List</h1>
+  {% if blogger_list %}
+    <ul class="list-section">
+      {% for blogger in blogger_list %}
+      <li>
+        <p><a href="{{ blogger.get_absolute_url }}">{{ blogger.user.username }}</a>
+        ({{ blogger.user.get_full_name }}) - Date joined: {{ blogger.first_joined }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no bloggers yet.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ post.title }}</h1>
+
+  <p><strong>Author:</strong> <a href="{{ post.author.get_absolute_url }}">{{ post.author }}</a></p>
+  <p><strong>Published:</strong> {{ post.date }}</p>
+  <p class="blog-post">{{ post.blog_text|linebreaks }}</p>
+
+
+  <div class="comments">
+  <p><strong>Comments:</strong></p>
+  <p><a href="{% url 'comment-form' post.id %}" class="btn"><em>Write a comment</em></a></p>
+  {% if post.comment_set.exists %}
+    {% for comment in post.comment_set.all %}
+      <div class="comment">
+        <p><strong>{{ comment.user.username }}</strong></p>
+        <p>{{ comment.comment_text|linebreaks }}</p>
+        <p><em>{{ comment.date }}</em></p>
+      </div>
+    {% endfor %}
+  {% else %}
+      <p>This blog post has no comments yet!</p>
+  {% endif %}
+  </div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Welcome to My Happy MiniBlog!!!</h1>
+    <p>
+        Welcome to My MiniBlog project! This is my final project for 
+        <em>Backend Development I</em> at <strong>Delgado Community College</strong>.
+    </p>
+    <h2>Dynamic Content</h2>
+    <p>This website has the following content:</p>
+    <ul>
+        <li><strong>Number of blog posts:</strong> {{ num_posts }}</li>
+        <li><strong>Number of bloggers:</strong> {{ num_bloggers }}</li>
+    </ul>
+
+    <p>
+        You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
+    </p>
+{% endblock %}
